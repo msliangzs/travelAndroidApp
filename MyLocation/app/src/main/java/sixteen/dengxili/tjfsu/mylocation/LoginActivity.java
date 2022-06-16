@@ -2,8 +2,6 @@ package sixteen.dengxili.tjfsu.mylocation;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -36,12 +34,11 @@ public class LoginActivity extends BaseActivity {
             passwordEdit.setText(password);
             rememberPass.setChecked(true);
         }
-
         login.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 String account=accountEdit.getText().toString();
                 String password=passwordEdit.getText().toString();
-                if(account.equals("msliang")&&password.equals("123456")){
+                if(account.equals("msliang")&&password.equals("1234")){
                     editor=pref.edit();
                     if(rememberPass.isChecked()){
                         editor.putBoolean("remember_password",true);
@@ -56,7 +53,7 @@ public class LoginActivity extends BaseActivity {
                     finish();
                 }else {
                     Toast.makeText(LoginActivity.this,
-                            "用户名或密码输入错误", Toast.LENGTH_SHORT).show();
+                            "account or password is invalid", Toast.LENGTH_SHORT).show();
                 }
             }
         });
